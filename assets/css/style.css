@@ -1,0 +1,270 @@
+/* =========================================
+   Mulai dari Baris 1 di assets/css/style.css
+   ========================================= */
+
+:root {
+    /* MENGATUR PALET WARNA (Sesuai Instruksi) */
+    --color-bg-light: #FAFAFA; /* Off-white yang bersih dan mewah */
+    --color-text-dark: #1A1A1A; /* Abu-abu sangat gelap (bukan hitam pekat) untuk teks */
+    --color-accent-gold: #C5A880; /* Emas Redup (Muted Gold) sebagai satu-satunya warna aksen */
+    
+    /* MENGATUR FONT */
+    --font-serif: 'Playfair Display', serif; /* Untuk Judul (Kesan Mapan & Old-Money) */
+    --font-sans: 'Inter', sans-serif; /* Untuk Teks Paragraf (Kesan Bersih & Modern) */
+}
+
+/* Pengaturan Dasar Halaman */
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    overflow-x: hidden; /* Mencegah layar bisa digeser ke kanan-kiri secara tidak sengaja */
+}
+
+/* Aturan Khusus untuk Judul */
+h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-serif);
+    color: var(--color-text-dark);
+}
+
+/* Utilitas Jarak & Ruang Kosong Ekstrem (Negative Space) */
+.section-padding {
+    padding: 120px 0; /* Memberikan "napas" yang sangat lega di setiap pergantian sesi */
+}
+
+/* =========================================
+   DESAIN TOMBOL MEWAH (Button)
+   ========================================= */
+.btn-luxury {
+    background-color: var(--color-accent-gold);
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border-radius: 0; /* Kotak tajam tanpa sudut membulat memberi kesan institusional yang tegas */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: background-color 0.4s ease-in-out; /* Animasi perubahan warna yang lambat & halus */
+}
+
+.btn-luxury:hover {
+    background-color: var(--color-text-dark); /* Saat disentuh mouse, berubah jadi gelap */
+    color: white;
+}
+
+/* Overlay Gelap untuk Hero Image */
+.hero-overlay {
+    background: linear-gradient(to right, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.3) 100%);
+}
+/* =========================================
+   PINTASAN LINI BISNIS (INTERAKSI ICON)
+   ========================================= */
+.shortcut-item {
+    cursor: pointer; /* Mengubah kursor panah menjadi ikon 'tangan' (klik) */
+    transition: all 0.3s ease; /* Animasi halus selama 0.3 detik */
+    opacity: 0.7; /* Sedikit transparan saat tidak disentuh */
+}
+
+.shortcut-item:hover {
+    opacity: 1; /* Menjadi warna solid saat disentuh */
+    transform: translateY(-5px); /* Ikon sedikit "terangkat" ke atas sebanyak 5 pixel */
+}
+
+.shortcut-item:hover i {
+    color: var(--color-text-dark) !important; /* Warna ikon berubah gelap saat disentuh, mengisyaratkan siap diklik */
+}
+
+/* Sedikit garis batas (border) halus antar ikon agar rapi */
+.shortcut-item:not(:last-child) {
+    border-right: 1px solid #EBEBEB;
+}
+
+/* Hilangkan garis batas saat di tampilan HP */
+@media (max-width: 768px) {
+    .shortcut-item:not(:last-child) {
+        border-right: none;
+        margin-bottom: 20px;
+    }
+}
+/* =========================================
+   GAYA TOMBOL SEKUNDER (OUTLINE LUXURY)
+   ========================================= */
+.btn-outline-luxury {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border: 1px solid #D1D1D1; /* Garis tepi abu-abu halus */
+    padding: 12px 30px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+}
+
+.btn-outline-luxury:hover {
+    border-color: var(--color-accent-gold);
+    color: var(--color-accent-gold);
+}
+
+/* =========================================
+   TIMELINE CORPORATE (GARIS WAKTU SEJARAH)
+   ========================================= */
+.timeline-corporate {
+    position: relative;
+    padding-left: 20px; /* Memberi ruang untuk garis di sebelah kiri */
+}
+
+/* Membuat garis vertikal emas menggunakan elemen semu (pseudo-element) */
+.timeline-corporate::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    bottom: 5px;
+    width: 1px;
+    background-color: var(--color-accent-gold);
+    opacity: 0.5; /* Dibuat sedikit redup agar tidak mendominasi */
+}
+
+/* Mengatur gaya setiap baris daftar sejarah */
+.timeline-corporate li {
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Mempertebal tahun agar mudah di-scan mata */
+.timeline-corporate li .year {
+    font-weight: 700;
+    color: var(--color-text-dark);
+    display: inline-block;
+    width: 45px; /* Lebar tetap agar teks tahun rata vertikal */
+    margin-right: 10px;
+}
+
+/* Membuat titik-titik (bulatan kecil) pada setiap tahun */
+.timeline-corporate li::before {
+    content: '';
+    position: absolute;
+    left: -24px; /* Menarik titik ke posisi garis vertikal */
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--color-bg-light); /* Tengahnya bolong/warna background */
+    border: 2px solid var(--color-accent-gold); /* Pinggirannya emas */
+    transition: background-color 0.3s ease;
+}
+
+/* Animasi: Saat baris di-hover, titiknya menyala terisi emas */
+.timeline-corporate li:hover::before {
+    background-color: var(--color-accent-gold);
+}
+
+/* =========================================
+   GAYA TAB KATEGORI (MINIMALIS)
+   ========================================= */
+.nav-corporate-tabs .nav-link {
+    color: #888;
+    border: none;
+    background: transparent;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-corporate-tabs .nav-link:hover {
+    color: var(--color-text-dark);
+}
+
+.nav-corporate-tabs .nav-link.active {
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+/* Garis emas di bawah tab yang sedang aktif */
+.nav-corporate-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent-gold);
+}
+
+/* =========================================
+   EFEK KARTU PORTOFOLIO (HOVER ZOOM)
+   ========================================= */
+.corporate-card {
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.corporate-card:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05) !important; /* Bayangan halus saat disentuh */
+    transform: translateY(-5px); /* Kartu terangkat sedikit */
+}
+
+/* Membungkus gambar agar kalau zoom, tidak keluar dari kotaknya (overflow: hidden) */
+.card-img-wrapper {
+    overflow: hidden;
+    height: 200px;
+}
+
+.card-img-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease; /* Animasi zoom yang sangat pelan */
+}
+
+/* Saat kartu di-hover, gambarnya membesar 5% ke dalam */
+.corporate-card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Teks link 'Pelajari Lebih Lanjut' */
+.card-link-btn {
+    color: var(--color-accent-gold);
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.corporate-card:hover .card-link-btn {
+    color: var(--color-text-dark); /* Warnanya menggelap saat kartu disentuh */
+}
+
+.btn-hover-gold {
+    transition: color 0.3s ease;
+}
+.btn-hover-gold:hover {
+    color: var(--color-accent-gold) !important;
+}
+
+/* =========================================
+   GAYA TOMBOL MARKETPLACE
+   ========================================= */
+.marketplace-btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.marketplace-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Garis pemisah khusus mode Desktop untuk Bottom Container */
+@media (min-width: 992px) {
+    .border-end-lg {
+        border-right: 1px solid #EBEBEB;
+    }
+}
